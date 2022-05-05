@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>aa</title>
+</head>
+<body>
+	<div th:if="${employees.size() == 0}">該当データがありません</div>
+	<table th:if="${employees.size() > 0}">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>部署名</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee : ${employees}" th:object="${employee}">
+				<td th:text="*{id}"></td>
+				<td th:text="*{name}"></td>
+				<td>
+				    <a th:href="@{/edit/{id}(id=*{id})}"> 編集 </a> 
+				    <a th:href="@{/delete/{id}(id=*{id})}"> 削除 </a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
